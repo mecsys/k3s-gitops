@@ -1,0 +1,30 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: nginx-ingress
+  namespace: nginx-ingress
+spec:
+  interval: 5m
+  url: https://kubernetes.github.io/ingress-nginx
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: nginx-ingress
+  namespace: ingress-nginx
+spec:
+  releaseName: nginx-ingress
+  serviceAccountName: ingress-nginx
+  chart:
+    spec:
+      install:
+        remediation:
+          retries: 3
+      upgrade:
+        remediation:
+          retries: 3
+      chart: ingress-nginx
+      sourceRef:
+        kind: HelmRepository
+        name: ingress-nginx
+  interval: 5m
