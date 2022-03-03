@@ -17,13 +17,7 @@ spec:
   serviceAccountName: ingress-nginx
   chart:
     spec:
-      install:
-        remediation:
-          retries: 3
-      upgrade:
-        remediation:
-          retries: 3
-      chart: ingress-nginx
+      chart: ingress-nginx      
       sourceRef:
         kind: HelmRepository
         name: ingress-nginx
