@@ -22,3 +22,6 @@ spec:
         kind: HelmRepository
         name: ingress-nginx
   interval: 5m
+  install:
+    remediation:
+      retries: 3
