@@ -14,7 +14,7 @@ metadata:
   namespace: ingress-nginx
 spec:
   releaseName: ingress-nginx
-  #serviceAccountName: ingress-nginx
+  serviceAccountName: ingress-nginx
   chart:
     spec:
       chart: ingress-nginx      
